@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { Gi3dGlasses } from "react-icons/gi";
+import { TbPacman } from "react-icons/tb";
 
 
 
@@ -7,13 +9,13 @@ function Header({ setFormActive }) {
 
   return (
     <header className='header'>
-       <img src="#" alt="logo" /> 
+       <Gi3dGlasses  className='logo'/>
        <ul className='list'>
-        <li>Главная</li>
-        <li>Контакты</li>
-        <li>Билеты</li>
+        <li>ГЛАВНАЯ</li>
+        <li>КОНТАНКТЫ</li>
+        <li>О НАС</li>
        </ul>
-       <button onClick={()=>setFormActive(true)}>Личный кабинет</button>
+       <button className='loginBtn' onClick={()=>setFormActive(true)}><TbPacman className='pacBtn'/>ВОЙТИ</button>
     </header>
     
   )
