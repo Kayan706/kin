@@ -20,7 +20,7 @@
       "img": "./img/1.jpg",
       "price" : "450р",
       "time": {
-        "morning": "10:00",
+        "morning": "9:00",
         "evening" : "20:00"
               }
     },
@@ -32,8 +32,8 @@
       "img": "./img/2.jpg",
       "price" : "450р",
       "time": {
-        "morning": "10:00",
-        "evening" : "20:00"
+        "morning": "12:00",
+        "evening" : "18:00"
               }
       
     },
@@ -45,8 +45,8 @@
       "img": "./img/3.jpg",
       "price" : "450р",
       "time": {
-        "morning": "10:00",
-        "evening" : "20:00"
+        "morning": "14:00",
+        "evening" : "16:00"
               }
     },
     {
@@ -58,7 +58,7 @@
       "price" : "450р",
       "time": {
         "morning": "10:00",
-        "evening" : "20:00"
+        "evening" : "14:00"
               }
     },
     {
@@ -69,8 +69,8 @@
       "img": "./img/5.jpg",
       "price" : "450р",
       "time": {
-        "morning": "10:00",
-        "evening" : "20:00"
+        "morning" : "12:00",
+        "evening": "16:00"
               }
     },
     {
@@ -81,8 +81,8 @@
       "img": "./img/6.jpg",
       "price" : "450р",
       "time": {
-        "morning": "10:00",
-        "evening" : "20:00"
+        "morning" : "10:00",
+        "evening": "18:00"
               }
     },
     {
@@ -93,8 +93,8 @@
       "img": "./img/7.jpg",
       "price" : "450р",
       "time": {
-        "morning": "10:00",
-        "evening" : "20:00"
+        "morning" : "8:00",
+        "evening": "20:00"
               }
     }
   ]
