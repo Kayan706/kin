@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Contacts from './pages/Contacts';
 import About from './pages/About';
+import PersonalAccount from './pages/PersonalAccount';
 
 function App() {
   const [formActive, setFormActive] = useState(false);
@@ -18,6 +19,7 @@ function App() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/about" element={<About />} />
         <Route path="/" element={<Home />} />
+        <Route path="/personalAccount" element={<PersonalAccount />} />
       </Routes>
 
       

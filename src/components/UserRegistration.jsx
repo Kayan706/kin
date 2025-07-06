@@ -1,6 +1,6 @@
 import React from 'react'
 
-function UserRegistration({ children, email, password, setActive }) {
+function UserRegistration({ children, name, email, password, setActive, clearForm, balance }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -20,11 +20,11 @@ function UserRegistration({ children, email, password, setActive }) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email, password })
+                body: JSON.stringify({ email, password, name, balance })
             });
 
             const data = await response.json();
-
+            clearForm()
 
             if (!response.ok) {
                 throw new Error(data.message || 'Ошибка при авторизации')

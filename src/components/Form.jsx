@@ -9,19 +9,27 @@ function Form({ active, setActive }) {
     const [tab, setTab] = useState('UserLogin')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [name, setName]=useState('')
+    const [nameClear, setNameClear] = useState(false)
     const [emailClear, setEmailClear] = useState(false)
     const [passwordClear, setPasswordClear] = useState(false)
+    const [nameError, setNameError] = useState('Name не может быть пустым!')
     const [emailError, setEmailError] = useState('Email не может быть пустым!')
     const [passwordError, setPasswordError] = useState('Пароль не может быть пустым!')
     const [formValid, setFomValid] = useState(false)
 
+    const clearForm = () => {
+        setName('')
+        setEmail('');
+        setPassword('')
+    }
 
 
 
 
 
     useEffect(() => {
-        if (emailError || passwordError) {
+        if (emailError || passwordError || nameError) {
             setFomValid(false)
         } else {
             setFomValid(true)
@@ -39,7 +47,18 @@ function Form({ active, setActive }) {
         }
     }
 
-    const passwordHandel = (e) => {
+    const nameHandel = (e) => {
+        setName(e.target.value)
+
+        if (!e.target.value) {
+            setNameError('Имя не может быть пустым!')
+
+        } else {
+            setNameError('')
+        }
+    }
+
+    const  passwordHandel= (e) => {
         setPassword(e.target.value)
         if (e.target.value.length < 4) {
             setPasswordError('Пароль Должен быть длинее 4 символов')
@@ -50,6 +69,7 @@ function Form({ active, setActive }) {
             setPasswordError('')
         }
     }
+
 
     const bluerHandel = (e) => {
         switch (e.target.name) {
@@ -70,21 +90,23 @@ function Form({ active, setActive }) {
             <div onClick={e => e.stopPropagation()}>
                 <TabSection isActive={tab} onChange={(current) => { setTab(current) }} />
                 {tab === 'UserRegistration' && (
-                    <UserRegistration email={email} password={password} setActive={setActive}>
+                    <UserRegistration clearForm={clearForm} balance={0} name={name} email={email} password={password} setActive={setActive}>
+                        {(nameClear && nameError) && <div className='formError'>{nameError}</div>}
+                        <input className='formInput' onChange={e=>nameHandel(e)} onBlur={(e) => bluerHandel(e)} value={name} name='name' type='text' placeholder='Name' />
                         {(emailClear && emailError) && <div className='formError'>{emailError}</div>}
-                        <input onChange={e => emailHandel(e)} value={email} onBlur={(e) => bluerHandel(e)} name='email' type='text' placeholder='Email' />
+                        <input className='formInput' onChange={e => emailHandel(e)} value={email} onBlur={(e) => bluerHandel(e)} name='email' type='text' placeholder='Email' />
                         {(passwordClear && passwordError) && <div className='formError'>{passwordError}</div>}
-                        <input onChange={e => passwordHandel(e)} value={password} onBlur={(e) => bluerHandel(e)} name='password' type="password" placeholder='password' />
-                        <Button disabled={!formValid} type='submit'>Регистрация</Button>
+                        <input className='formInput' onChange={e => passwordHandel(e)} value={password} onBlur={(e) => bluerHandel(e)} name='password' type="password" placeholder='password' />
+                        <Button className='btnSub' disabled={!formValid} type='submit'>Регистрация</Button>
                     </UserRegistration>
                 )}
                 {tab === 'UserLogin' && (
-                    <UserLogin email={email} password={password} setActive={setActive}>
+                    <UserLogin clearForm={clearForm} email={email} password={password} setActive={setActive}>
                         {(emailClear && emailError) && <div className='formError'>{emailError}</div>}
-                        <input onChange={e => emailHandel(e)} value={email} onBlur={(e) => bluerHandel(e)} name='email' type='text' placeholder='Email' />
+                        <input className='formInput' onChange={e => emailHandel(e)} value={email} onBlur={(e) => bluerHandel(e) } name='email' type='text' placeholder='Email' />
                         {(passwordClear && passwordError) && <div className='formError'>{passwordError}</div>}
-                        <input onChange={e => passwordHandel(e)} value={password} onBlur={(e) => bluerHandel(e)} name='password' type="password" placeholder='password' />
-                        <Button disabled={!formValid} type='submit'>Авторизироваться</Button>
+                        <input className='formInput' onChange={e => passwordHandel(e)} value={password} onBlur={(e) => bluerHandel(e)} name='password' type="password" placeholder='Password' />
+                        <Button className='btnSub' disabled={!formValid} type='submit'>Авторизироваться</Button>
                     </UserLogin>
                 )}
             </div>
